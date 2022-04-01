@@ -1,7 +1,12 @@
 import React from 'react';
+import Rotas from './pages/Rotas';
 
-function App() {
-  return <div>DEUS ME AJUDE, AMÉM </div>;
+export class App extends React.Component {
+  render() {
+    return (
+
+      <Rotas />
+    );
+  }
 }
-
 export default App;
