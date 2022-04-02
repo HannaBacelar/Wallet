@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ACTION_EMAIL } from '../actions/index';
-// import Rotas from './Rotas';
+import './Header.css';
 
 const INITIAL_STATE = {
   email: '',
@@ -25,7 +25,7 @@ class Login extends React.Component {
 
   verificaSenhaEBotao = () => {
     const { email, senha } = this.state;
-    const regexEmail = /^[a-z0-9]+@[a-z0-9]+\.[a-z]+/i;
+    const regexEmail = /^[a-z0-9]+@[a-z0-9]+\.[a-z]+/i; // https://pt.stackoverflow.com/questions/1386/express%C3%A3o-regular-para-valida%C3%A7%C3%A3o-de-e-mail
     const number6 = 6;
     if (regexEmail.test(email) && senha.length >= number6) {
       this.setState({
@@ -50,7 +50,7 @@ class Login extends React.Component {
     return (
       <div>
 
-        <form>
+        <form className="form">
           <label htmlFor="email-input">
             <input
               data-testid="email-input"
@@ -58,6 +58,7 @@ class Login extends React.Component {
               name="email"
               value={ email }
               id="email-input"
+              placeholder="Digite seu email"
               onChange={ this.verificaInput }
             />
           </label>
@@ -68,6 +69,7 @@ class Login extends React.Component {
               name="senha"
               value={ senha }
               id="senha-input"
+              placeholder="Senha"
               onChange={ this.verificaInput }
             />
           </label>

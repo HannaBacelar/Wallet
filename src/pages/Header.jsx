@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import './Header.css';
 
 export class Header extends React.Component {
   render() {
     const { emailState } = this.props;
     return (
-      <header>
+      <header className="header">
         <p
           data-testid="email-field"
         >
@@ -32,5 +33,5 @@ Header.propTypes = {
   emailState: PropTypes.string,
 }.isRequired;
 
-// mapStateToProps é uma função que você usaria para fornecer os dados da loja ao seu componente,
+// mapStateToProps é uma função que você usaria para fornecer os dados da 'loja' ao seu componente,
 export default connect(mapStateToProps)(Header);
