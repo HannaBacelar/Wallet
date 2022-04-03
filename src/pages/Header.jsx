@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Header.css';
+import Cabecalho from '../components/Cabecalho';
 
 export class Header extends React.Component {
   render() {
     const { emailState } = this.props;
     return (
+
       <header className="header">
+        <Cabecalho />
         <p
           data-testid="email-field"
         >
