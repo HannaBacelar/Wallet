@@ -2,15 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Header.css';
-import Cabecalho from '../components/Cabecalho';
 
-export class Header extends React.Component {
+class Header extends React.Component {
+  converteValor = () => {
+    const { expenses } = this.props;
+    let valorTotal = 0;
+    if (expenses.length > 0) {
+      expenses.forEach((item) => {
+        const valorConversao = item.exchangeRates[item.currency].ask;
+        valorTotal += item.value * valorConversao;
+      });
+    }
+    return valorTotal.toFixed(2);
+  }
+
   render() {
     const { emailState } = this.props;
     return (
 
       <header className="header">
-        <Cabecalho />
+
         <p
           data-testid="email-field"
         >
@@ -20,7 +31,7 @@ export class Header extends React.Component {
         <p
           data-testid="total-field"
         >
-          0
+          { this.converteValor() }
         </p>
         <p data-testid="header-currency-field">BRL</p>
       </header>
@@ -28,12 +39,15 @@ export class Header extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state) => ({
   emailState: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
   emailState: PropTypes.string,
+  expenses: PropTypes.func,
 }.isRequired;
 
 // mapStateToProps é uma função que você usaria para fornecer os dados da 'loja' ao seu componente,
