@@ -81,7 +81,7 @@ class Form extends React.Component {
              Moeda
              <select
                id="currency-input"
-               ata-testid="currency-input"
+               data-testid="currency-input"
                name="currency"
                value={ currency }
                onChange={ this.handleChange }
